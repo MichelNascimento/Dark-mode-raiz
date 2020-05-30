@@ -27,14 +27,15 @@ const darkMode = {
 const transformKey = key => 
     "--" + key.replace(/([A-Z])/, "-$1").toLowerCase()
 
+// função que recebe o objeto de cores como parâmetro e acessa o documento (HTML) para setar as novas propriedades.
 const changeColors = (colors) => {
     Object.keys(colors).map(key => {
         html.style.setProperty(transformKey(key), colors[key])
     })
 }
 
-// ouvindo o evento de mudança (change) do checkbox, para validar se função de alteração de cores (changeColors) 
-// receberá as propriedade do modo light ou dark.
+// ouvindo o evento de mudança (change) do checkbox, para validar se a função de alteração de cores (changeColors) 
+// receberá as propriedades do modo light ou dark.
 checkbox.addEventListener("change", ({ target }) => {
     target.checked ? changeColors(darkMode) : changeColors(initialColors)
 })
